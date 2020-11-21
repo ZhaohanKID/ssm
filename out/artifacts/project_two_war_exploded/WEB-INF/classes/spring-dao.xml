@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                    http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--  连接到数据库  -->
+    <context:property-placeholder location="classpath:db.properties"/>
+    <!--  数据源  -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="password" value="${password}"/>
+        <property name="jdbcUrl" value="${url}"/>
+        <property name="driverClass" value="${driver}"/>
+        <property name="user" value="${username}"/>
+    </bean>
+    <!--  SqlSessionFactory  -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--  绑定mybatis配置文件  -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+<!--        <property name="mapperLocations" value="classpath:com/kuang/dao/BookMapper.xml"/>-->
+    </bean>
+    <!--  SqlSession  -->
+
+    <!--  配置dao接口扫描包，动态的实现了dao接口，可以注入到spring容器中  -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--  注入sqlSessionFactory  -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!--  要扫描的dao包  -->
+        <property name="basePackage" value="com.kuang.dao"/>
+    </bean>
+</beans>
