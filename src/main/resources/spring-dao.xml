@@ -8,11 +8,11 @@
     <!--  连接到数据库  -->
     <context:property-placeholder location="classpath:db.properties"/>
     <!--  数据源  -->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="url" value="${url}"/>
+        <property name="driverClassName" value="${driver}"/>
         <property name="password" value="${password}"/>
-        <property name="jdbcUrl" value="${url}"/>
-        <property name="driverClass" value="${driver}"/>
-        <property name="user" value="${username}"/>
+        <property name="username" value="${username}"/>
     </bean>
     <!--  SqlSessionFactory  -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
