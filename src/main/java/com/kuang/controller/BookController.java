@@ -30,4 +30,17 @@ public class BookController {
 
         return "allBook";
     }
+
+    @RequestMapping("/addBook")
+    public String toAddPage(Books books) {
+
+        System.out.println("接收到的参数是：" + books);
+
+        // 获取前端提交过来的参数
+        bookService.addBook(books);
+
+        return "redirect:/allBook";
+    }
+
+
 }

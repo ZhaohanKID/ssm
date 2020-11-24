@@ -1,10 +1,12 @@
 package com.kuang.pojo;
 
+import java.io.Serializable;
+
 /**
  * @Author: Z.HAN
  * @Date: 2020/11/21 19:29
  */
-public class Books {
+public class Books implements Serializable {
     private int bookID;
     private String bookName;
     private int bookCounts;

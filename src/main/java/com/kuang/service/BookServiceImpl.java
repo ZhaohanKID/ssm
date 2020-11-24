@@ -2,6 +2,8 @@ package com.kuang.service;
 
 import com.kuang.dao.BookMapper;
 import com.kuang.pojo.Books;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
