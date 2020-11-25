@@ -70,6 +70,14 @@
             <artifactId>spring-jdbc</artifactId>
             <version>5.1.9.RELEASE</version>
         </dependency>
+
+        <!--为了切入事务-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.13</version>
+        </dependency>
+
     </dependencies>
     <!--  2. 静态资源导出  -->
     <build>
